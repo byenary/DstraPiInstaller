@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo "Starting Dstra pi GUI install "
+apt-get update --yes
+apt-get upgrade --yes
+apt-get update --yes
+
+cd /home/pi
+wget https://github.com/DSTRACoin/dstra/archive/v1.2.5.tar.gz
+tar -xzf v1.2.5.tar.gz
+apt-get install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools build-essential libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libdb++-dev libminiupnpc-d
+#Adding desktop shortcut
+
+sudo -u pi touch /home/pi/Desktop/dstra-qt.desktop
+
+{
+        echo '[Desktop Entry]'
+        echo 'Name=Dstra-QT'
+        echo 'Comment=Dstra Core GUI'
+        echo 'Exec=env LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/BerkeleyDB.4.8/lib:/home/pi/openssl/lib" /home/pi/dstra-1.2.5/dstra-qt'
+        echo 'Type=Application'
+        echo 'Encoding=UTF-8'  
+        echo 'Terminal=false'
+        echo 'Categories=None'
+} >> /home/pi/Desktop/dstra-qt.desktop
+
