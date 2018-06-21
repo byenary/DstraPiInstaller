@@ -10,8 +10,13 @@ wget https://github.com/DSTRACoin/dstra/archive/v1.2.5.tar.gz
 tar -xzf v1.2.5.tar.gz
 apt-get install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools build-essential libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libdb++-dev libminiupnpc-dev
 #Adding desktop shortcut
+sudo -u pi qmake "USE_QRCODE=1" "USE_UPNP=1" "OPENSSL_INCLUDE_PATH=/home/pi/openssl/include" "OPENSSL_LIB_PATH=/home/pi/openssl/lib" "BDB_INCLUDE_PATH=/usr/local/BerkeleyDB.4.8/include" "BDB_LIB_PATH=/usr/local/BerkeleyDB.4.8/lib"
+sudo -u pi make
+
+
 
 sudo -u pi touch /home/pi/Desktop/dstra-qt.desktop
+
 
 {
         echo '[Desktop Entry]'
